@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello React</title>
+		<meta charset="utf-8">
+	</head>
+	<section></section>
+	<body>
+		<div id="app"></div>
+		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		<script>
+			// define ingredients.
+			let ingredients = [
+				"suger",
+				"spice",
+				"everything nice",
+				"candy",
+				"chocolate",
+			];
+
+			// define custom component.
+			class IngredientsList extends React.Component {
+				render () {
+					React.createElement("ul", null,
+						this.props.ingredients.map(
+							(ingredient, idx) => {
+								return React.createElement("li", { key: idx }, ingredient);
+							}
+						)
+					)
+				}
+			}
+
+			// define component properties.
+			let p = {
+				ingredients: ingredients,
+			};
+
+			// render.
+			ReactDOM.render(
+				React.DOM.createElement(IngredientsList, p, null), 
+				document.getElementById("app"),
+			);
+		</script>
+	</body>
+</html>

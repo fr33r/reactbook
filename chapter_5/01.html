@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello React</title>
+		<meta charset="utf-8">
+	</head>
+	<section></section>
+	<body>
+		<div id="app"></div>
+		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		<script src="https://cdnjs.com/cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+		<script text="test/babel">
+			// define application state.
+			let data = [{
+				name: "Baked Salmon",
+				ingredients: [{
+					name: "Salmon",
+					amount: 1,
+					measurement: "1 lb"
+				},
+				{
+					name: "Pine Nuts",
+					amount: 1,
+					measurement: "cup"
+				},
+				{
+					name: "Butter Lettuce",
+					amount: 2,
+					measurement: "cups"
+				},
+				{
+					name: "Yellow Squash",
+					amount: 2,
+					measurement: "med"
+				},
+				{
+					name: "Olive Oil",
+					amount: 0.5,
+					measurement: "cup"
+				},
+				{
+					name: "Garlic",
+					amount: 3,
+					measurement: "cloves"
+				}],
+				steps: [
+					"Step 1",
+					"Step 2",
+				]
+			}]
+
+			// define menu component using JSX.
+			class Menu extends React.Component {
+				render() {
+					<article>
+						<header>
+							<h1>{this.props.title}</h1>
+						</header>
+						<div className="recipes">
+							{this.props.recipes.map((recipe, idx) => 
+								<Recipe key={idx} name={recipe.name} ingredients={recipe.ingredients} steps={recipe.steps}/>
+							)}
+						</div>
+					</article>
+				}
+			}
+
+			// define recipe component using JSX.
+			class Recipe extends React.Component {
+				render() {
+					<section id={name.toLowerCase().replace(/ /g, "-")}>
+						<h1>{this.props.name}</h1>
+						<ul className="ingredients">
+							{this.props.ingredients.map((ingredient, idx) =>
+								<li key={idx}>{ingredient.name}</li>
+							)}
+						</ul>
+						<section className="instructions">
+							<h2>Cooking Instructions</h2>
+							{this.props.steps.map((step, idx) =>
+								<p key={idx}>{step}</p>
+							)}
+						</section>
+					</section>
+				}
+			}
+
+			// render.
+			ReactDOM.render(
+				<Menu recipes={data} title="Delicious Recipes" />,
+				document.getElementById("app")
+			);
+		</script>
+	</body>
+</html>
