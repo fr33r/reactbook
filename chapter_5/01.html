@@ -9,8 +9,8 @@
 		<div id="app"></div>
 		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-		<script src="https://cdnjs.com/cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
-		<script text="test/babel">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.29/browser.js"></script>
+		<script type="text/babel">
 			// define application state.
 			let data = [{
 				name: "Baked Salmon",
@@ -48,43 +48,49 @@
 					"Step 1",
 					"Step 2",
 				]
-			}]
+			}];
 
 			// define menu component using JSX.
 			class Menu extends React.Component {
 				render() {
-					<article>
-						<header>
-							<h1>{this.props.title}</h1>
-						</header>
-						<div className="recipes">
-							{this.props.recipes.map((recipe, idx) => 
-								<Recipe key={idx} name={recipe.name} ingredients={recipe.ingredients} steps={recipe.steps}/>
-							)}
-						</div>
-					</article>
+					return (
+						<article>
+							<header>
+								<h1>{this.props.title}</h1>
+							</header>
+							<div className="recipes">
+								{this.props.recipes.map((recipe, idx) => 
+									<Recipe key={idx} name={recipe.name} ingredients={recipe.ingredients} steps={recipe.steps}/>
+								)}
+							</div>
+						</article>
+					);
 				}
 			}
 
 			// define recipe component using JSX.
 			class Recipe extends React.Component {
 				render() {
-					<section id={name.toLowerCase().replace(/ /g, "-")}>
-						<h1>{this.props.name}</h1>
-						<ul className="ingredients">
-							{this.props.ingredients.map((ingredient, idx) =>
-								<li key={idx}>{ingredient.name}</li>
-							)}
-						</ul>
-						<section className="instructions">
-							<h2>Cooking Instructions</h2>
-							{this.props.steps.map((step, idx) =>
-								<p key={idx}>{step}</p>
-							)}
+					return (
+						<section id={this.props.name.toLowerCase().replace(/ /g, "-")}>
+							<h1>{this.props.name}</h1>
+							<ul className="ingredients">
+								{this.props.ingredients.map((ingredient, idx) =>
+									<li key={idx}>{ingredient.name}</li>
+								)}
+							</ul>
+							<section className="instructions">
+								<h2>Cooking Instructions</h2>
+								{this.props.steps.map((step, idx) =>
+									<p key={idx}>{step}</p>
+								)}
+							</section>
 						</section>
-					</section>
+					);
 				}
 			}
+
+			console.log("hey there!");
 
 			// render.
 			ReactDOM.render(

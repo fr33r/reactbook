@@ -1,0 +1,81 @@
+body {
+	font-family: "Trebuchet MS", Helvetica, sans-serif;
+	width: 100%;
+	padding: 10px;
+}
+
+.star {
+	cursor: pointer;
+	height: 25px;
+	width: 25px;
+	margin: 2px;
+	float: left;
+	background-color: grey;
+	clip-path: polygon(
+		50% 0%,
+		63% 38%,
+		100% 38%,
+		69% 59%,
+		82% 100%,
+		50% 75%,
+		18% 100%,
+		31% 59%,
+		0 38%,
+		37% 38%
+	);
+}
+
+.star.selected {
+	background-color: red;
+}
+
+.color {
+	position: relative;
+	text-align: center;
+	float: left;
+	padding: 10px;
+	box-shadow: 5px 10px;
+	margin-right: 10px;
+	margin-top: 10px;
+	border: dotted 1px black;
+}
+
+.color button {
+	font-weight: bold;
+	padding: 5px;
+	box-shadow: 1px 3px;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	border-radius: 50%;
+	background-color: #ff4d4d;
+}
+
+.color .preview {
+	display: block;
+	width: 100%;
+	height: 50px;
+}
+
+input[type="text"] {
+	width: 50%;
+	padding: 10px;
+	outline: none;
+}
+
+input[type="color"] {
+	width: 50px;
+	border-style: none;
+	outline: none;
+}
+
+form > button {
+	border-radius: 10%;
+	width: 10%;
+	padding: 10px;
+	font-weight: bold;
+	background-color: #ff4d4d;
+	border: none;
+}
